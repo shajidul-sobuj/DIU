@@ -8,24 +8,6 @@ typedef struct node
     struct node *pre;
 }Node;
 
-void insert_nodes(Node **head, Node **tail, int val)
-{
-    Node *newnode = malloc(sizeof(Node));
-    newnode->val = val;
-    newnode->next = NULL;
-    newnode->pre = NULL;
-
-    if (*head == NULL)
-    {
-        *head = newnode;
-        *tail = newnode;
-        return;
-    }
-
-    (*tail)->next = newnode;
-    newnode->pre = *tail;
-    *tail = newnode;
-}
 
 void insert_at_head(Node **head, int val)
 {
@@ -173,4 +155,5 @@ int main()
     printing_forword(head);
 
     return 0;
+
 }
