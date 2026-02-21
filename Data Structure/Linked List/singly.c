@@ -7,23 +7,6 @@ typedef struct node
     struct node *next;
 }Node;
 
-void insert_val(Node **head, Node **tail, int val)
-{
-    Node *newnode = malloc(sizeof(Node));
-    newnode->val = val;
-    newnode->next = NULL;
-
-    if (*head == NULL) 
-    {
-        *head = newnode;
-        *tail = newnode;
-        return;
-    }
-    (*tail)->next = newnode;
-    *tail = newnode;
-
-}
-
 void insert_at_head(Node **head,Node **tail, int val)
 {
     Node *newnode = malloc(sizeof(Node));
@@ -98,18 +81,6 @@ void delete_any(Node *head, int idx)
     free(deletenode);
 }
 
-void reverse_list(Node **head, Node *temp, Node **tail)
-{
-    if (temp->next == NULL)
-    {
-        *head = temp;
-        return;
-    }
-    reverse_list(&head,temp->next,&tail);
-    temp->next->next = temp;
-    temp->next = NULL;
-    *tail = temp;
-}
 
 void printing(Node *head)
 {
@@ -172,8 +143,6 @@ int main()
     delete_any(head, 2);
     printing(head); 
  
-    printf("Reverse list: ");
-    reverse_list(&head, head, &tail);
-    printing(head);
     return 0;
+
 }
